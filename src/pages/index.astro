@@ -3,8 +3,9 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import ToolCard from '../components/ToolCard.astro';
-import { getToolsByCategory, categories, tools, type Category } from '../data/tools';
+import { getTools, getToolsByCategorySync, categories, type Category } from '../data/tools';
 
+const tools = await getTools();
 const categoryList = Object.entries(categories) as [Category, { label: string; description: string; icon: string }][];
 ---
 
@@ -128,7 +129,7 @@ const categoryList = Object.entries(categories) as [Category, { label: string; d
         <!-- Collapsible Category Accordions -->
         <div class="max-w-4xl mx-auto" id="categories-container">
           {categoryList.map(([categoryKey, categoryInfo], index) => {
-            const categoryTools = getToolsByCategory(categoryKey);
+            const categoryTools = getToolsByCategorySync(tools, categoryKey);
             return (
               <details
                 class="category-accordion"

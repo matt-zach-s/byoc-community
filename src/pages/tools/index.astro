@@ -3,9 +3,10 @@ import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import ToolCard from '../../components/ToolCard.astro';
-import { tools, categories, type Category } from '../../data/tools';
+import { getTools, categories, type Category } from '../../data/tools';
 import { exampleCompanies } from '../../data/exampleCompanies';
 
+const tools = await getTools();
 const categoryList = Object.entries(categories) as [Category, { label: string; description: string; icon: string }][];
 const languages = [...new Set(tools.filter(t => t.language).map(t => t.language))].sort();
 const cloudOptions = ['aws', 'gcp', 'azure', 'on-prem', 'any'];

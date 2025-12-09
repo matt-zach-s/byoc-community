@@ -3,18 +3,19 @@ import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import ToolCard from '../../components/ToolCard.astro';
-import { tools, categories, getToolsByCategory } from '../../data/tools';
+import { getTools, categories, getToolsByCategorySync } from '../../data/tools';
 
-export function getStaticPaths() {
+export async function getStaticPaths() {
+  const tools = await getTools();
   return tools.map((tool) => ({
     params: { id: tool.id },
-    props: { tool },
+    props: { tool, tools },
   }));
 }
 
-const { tool } = Astro.props;
+const { tool, tools } = Astro.props;
 const categoryInfo = categories[tool.category];
-const relatedTools = getToolsByCategory(tool.category)
+const relatedTools = getToolsByCategorySync(tools, tool.category)
   .filter((t) => t.id !== tool.id)
   .slice(0, 3);
 

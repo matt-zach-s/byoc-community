@@ -7,27 +7,37 @@ Thanks for your interest in contributing! This project is a community-curated li
 ### Adding a New Tool
 
 1. Fork this repository
-2. Edit `src/data/tools.ts` and add your tool to the appropriate category
-3. Submit a pull request
+2. Create a new Markdown file in `src/content/tools/` named `your-tool.md`
+3. Add the required frontmatter (see format below)
+4. Submit a pull request
 
-**Tool format:**
-```typescript
-{
-  id: 'your-tool-id',
-  name: 'Tool Name',
-  description: 'Short one-line description',
-  longDescription: 'Optional longer description (2-3 sentences)',
-  homepage: 'https://example.com',
-  github: 'https://github.com/org/repo', // if open source
-  docs: 'https://docs.example.com',
-  category: 'databases', // see categories below
-  tags: ['relevant', 'keywords'],
-  license: 'open-source', // or 'commercial' or 'hybrid'
-  language: 'Go', // if open source
-  cloudSupport: ['aws', 'gcp', 'azure'], // or ['any'] or ['on-prem']
-  stars: 1234, // GitHub stars if applicable
-}
+**Tool format (Markdown with YAML frontmatter):**
+
+Create a file like `src/content/tools/your-tool.md`:
+
+```markdown
+---
+name: Tool Name
+description: Short one-line description
+longDescription: Optional longer description (2-3 sentences)
+homepage: https://example.com
+github: https://github.com/org/repo  # if open source
+docs: https://docs.example.com
+category: databases  # see categories below
+tags:
+  - relevant
+  - keywords
+license: open-source  # or 'commercial' or 'hybrid'
+language: Go  # if open source
+cloudSupport:
+  - aws
+  - gcp
+  - azure  # or just '- any' or '- on-prem'
+stars: 1234  # GitHub stars if applicable
+---
 ```
+
+**Note:** The file name becomes the tool's URL slug. Use lowercase with hyphens (e.g., `my-tool.md` → `/tools/my-tool`).
 
 **Categories:**
 - `databases` - Databases and data platforms
@@ -60,7 +70,9 @@ Featured vendors are BYOC implementations we consider exemplary. To suggest one:
 
 If you notice incorrect or outdated information:
 
-1. Fork and edit the relevant file in `src/data/`
+1. Fork and edit the relevant file:
+   - For tools: `src/content/tools/<tool-name>.md`
+   - For featured vendors: `src/data/featuredVendors.ts`
 2. Submit a PR with a brief description of what you fixed
 
 ### Improving the Site

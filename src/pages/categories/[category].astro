@@ -3,18 +3,19 @@ import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import ToolCard from '../../components/ToolCard.astro';
-import { categories, getToolsByCategory, type Category } from '../../data/tools';
+import { categories, getTools, getToolsByCategorySync, type Category } from '../../data/tools';
 
-export function getStaticPaths() {
+export async function getStaticPaths() {
+  const tools = await getTools();
   return (Object.keys(categories) as Category[]).map((category) => ({
     params: { category },
-    props: { category },
+    props: { category, tools },
   }));
 }
 
-const { category } = Astro.props;
+const { category, tools } = Astro.props;
 const categoryInfo = categories[category as Category];
-const categoryTools = getToolsByCategory(category as Category);
+const categoryTools = getToolsByCategorySync(tools, category as Category);
 ---
 
 <Layout title={categoryInfo.label} description={categoryInfo.description}>
