@@ -215,13 +215,13 @@ import Footer from '../components/Footer.astro';
     </section>
 
     <script>
-      document.addEventListener('astro:page-load', () => {
+      function initArchTabs() {
         const tabs = document.querySelectorAll('.arch-tab');
         const diagrams = document.querySelectorAll('.ascii-diagram');
         const details = document.querySelectorAll('#pattern-details > div');
         const titleEl = document.getElementById('diagram-title');
 
-        const titles: Record<string, string> = {
+        const titles = {
           'control-plane': 'control-plane.txt',
           'agent': 'agent-based.txt',
           'self-hosted': 'self-hosted.txt'
@@ -247,7 +247,16 @@ import Footer from '../components/Footer.astro';
             if (titleEl && pattern) titleEl.textContent = titles[pattern] || '';
           });
         });
-      });
+      }
+
+      // Run on initial load
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initArchTabs);
+      } else {
+        initArchTabs();
+      }
+      // Also run on Astro page transitions
+      document.addEventListener('astro:page-load', initArchTabs);
     </script>
 
     <!-- Implementation Section -->
