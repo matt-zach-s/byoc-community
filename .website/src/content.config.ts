@@ -22,7 +22,6 @@ const toolsCollection = defineCollection({
     language: z.string().optional(),
     cloudSupport: z.array(z.enum(['aws', 'gcp', 'azure', 'on-prem', 'any'])),
     stars: z.number().optional(),
-    featured: z.boolean().optional(),
   }),
 });
 

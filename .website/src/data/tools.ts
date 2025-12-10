@@ -15,7 +15,6 @@ export interface Tool {
   cloudSupport: ('aws' | 'gcp' | 'azure' | 'on-prem' | 'any')[];
   stars?: number;
   lastUpdated?: string;
-  featured?: boolean;
 }
 
 export type Category =
@@ -67,11 +66,6 @@ export async function getToolsByCategory(category: Category): Promise<Tool[]> {
   return tools.filter((tool) => tool.category === category);
 }
 
-export async function getFeaturedTools(): Promise<Tool[]> {
-  const tools = await getTools();
-  return tools.filter((tool) => tool.featured);
-}
-
 export async function getToolById(id: string): Promise<Tool | undefined> {
   const tools = await getTools();
   return tools.find((tool) => tool.id === id);
@@ -108,8 +102,4 @@ export async function filterTools(filters: {
 // This requires tools to be passed in from the page's getStaticPaths or frontmatter
 export function getToolsByCategorySync(tools: Tool[], category: Category): Tool[] {
   return tools.filter((tool) => tool.category === category);
-}
-
-export function getFeaturedToolsSync(tools: Tool[]): Tool[] {
-  return tools.filter((tool) => tool.featured);
 }
