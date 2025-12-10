@@ -2,18 +2,18 @@
 
 > A curated list of Bring Your Own Cloud (BYOC) tools and resources.
 
-**BYOC (Bring Your Own Cloud)** is a deployment model where software runs in *your* cloud account instead of a vendor's shared environment. This gives you data sovereignty, compliance control, cost transparency, and no vendor lock-in.
+**BYOC (Bring Your Own Cloud)** is a deployment model where software runs in *a customer's* cloud account instead of a vendor's shared environment. This gives you data sovereignty, compliance control, cost transparency, and no vendor lock-in.
 
-**[View the website](https://buildyourown.dev)**
+**[View the website](https://awesomebyoc.com)**
 
 ## Contents
 
-- [BYOC Tools](#byoc-tools)
+- [Apps that offer BYOC](#byoc-apps)
   - [Databases](#databases)
   - [Streaming](#streaming)
   - [Observability](#observability)
   - [Data Integration](#data-integration)
-  - [Dev Platforms](#dev-platforms)
+  - [BYOC platforms](#BYOC-platforms)
 - [What is BYOC?](#what-is-byoc)
 - [Contributing](#contributing)
 
