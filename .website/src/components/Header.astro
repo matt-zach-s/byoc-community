@@ -1,6 +1,6 @@
 ---
 const navLinks = [
-  { href: '/about', label: 'More on BYOC' },
+  { href: '/about', label: '>more_on_byoc', mono: true },
 ];
 
 const currentPath = Astro.url.pathname;
@@ -23,6 +23,7 @@ const currentPath = Astro.url.pathname;
             href={link.href}
             class:list={[
               "px-4 py-2 text-sm font-medium rounded-lg transition-colors",
+              link.mono ? "font-mono" : "",
               currentPath === link.href || currentPath.startsWith(link.href + '/')
                 ? "bg-[var(--color-accent-50)] text-[var(--color-accent-700)]"
                 : "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-slate-100)]"
@@ -97,6 +98,7 @@ const currentPath = Astro.url.pathname;
             href={link.href}
             class:list={[
               "px-4 py-2 text-sm font-medium rounded-lg transition-colors",
+              link.mono ? "font-mono" : "",
               currentPath === link.href || currentPath.startsWith(link.href + '/')
                 ? "bg-[var(--color-accent-50)] text-[var(--color-accent-700)]"
                 : "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-slate-100)]"

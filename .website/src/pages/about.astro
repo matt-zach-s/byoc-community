@@ -7,403 +7,386 @@ import Footer from '../components/Footer.astro';
 <Layout title="More on BYOC">
   <Header />
 
-  <main class="flex-1 bg-[var(--color-slate-50)]">
-    <div class="container py-8 md:py-12">
-      <div class="max-w-4xl mx-auto">
-        <!-- Page Header -->
-        <div class="text-center mb-12">
-          <h1 class="text-3xl md:text-4xl font-bold text-[var(--color-text-primary)] mb-4">
-            More on BYOC
+  <main class="flex-1">
+    <!-- Hero Section - Dark with terminal vibe -->
+    <section class="bg-dark-section py-16 md:py-24">
+      <div class="container">
+        <div class="max-w-4xl mx-auto text-center">
+          <h1 class="font-mono text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+            <span class="text-[var(--color-accent-500)]">&gt;</span> BYOC<span class="blinking-cursor">_</span>
           </h1>
-          <p class="text-lg text-[var(--color-text-secondary)]">
-            A deep dive into Bring Your Own Cloud for engineering teams
+          <p class="text-xl md:text-2xl text-slate-300 max-w-2xl mx-auto">
+            Deploy software in your customer's cloud account.
+            <br class="hidden md:block" />
+            Keep data where it belongs.
           </p>
         </div>
+      </div>
+    </section>
 
-        <!-- Content -->
-        <div class="bg-[var(--color-surface)] rounded-xl border border-[var(--color-slate-200)] p-8 space-y-10">
-
-          <!-- What is BYOC -->
-          <section id="what-is-byoc">
-            <h2 class="text-2xl font-bold text-[var(--color-text-primary)] mb-4">What is BYOC?</h2>
-            <p class="text-[var(--color-text-secondary)] mb-4">
-              <strong>Bring Your Own Cloud (BYOC)</strong> is a deployment model where software runs in your own cloud infrastructure rather than in a vendor's shared environment. This approach offers several key benefits:
-            </p>
-            <ul class="space-y-3 text-[var(--color-text-secondary)]">
-              <li class="flex items-start gap-3">
-                <span class="w-6 h-6 rounded-full bg-[var(--color-accent-100)] text-[var(--color-accent-700)] flex items-center justify-center shrink-0 mt-0.5 text-sm font-medium">1</span>
-                <span><strong>Data Sovereignty</strong> — Your data never leaves your cloud account, making it easier to meet compliance requirements (SOC 2, HIPAA, GDPR, etc.)</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="w-6 h-6 rounded-full bg-[var(--color-accent-100)] text-[var(--color-accent-700)] flex items-center justify-center shrink-0 mt-0.5 text-sm font-medium">2</span>
-                <span><strong>No Vendor Lock-in</strong> — You maintain control over your infrastructure and can switch vendors or self-host if needed</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="w-6 h-6 rounded-full bg-[var(--color-accent-100)] text-[var(--color-accent-700)] flex items-center justify-center shrink-0 mt-0.5 text-sm font-medium">3</span>
-                <span><strong>Cost Transparency</strong> — Infrastructure costs appear on your cloud bill, making budgeting and optimization straightforward</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="w-6 h-6 rounded-full bg-[var(--color-accent-100)] text-[var(--color-accent-700)] flex items-center justify-center shrink-0 mt-0.5 text-sm font-medium">4</span>
-                <span><strong>Security Control</strong> — Apply your existing security policies, network controls, and audit processes</span>
-              </li>
-            </ul>
-          </section>
-
-          <hr class="border-[var(--color-slate-200)]" />
-
-          <!-- Architecture Patterns -->
-          <section id="architecture-patterns">
-            <h2 class="text-2xl font-bold text-[var(--color-text-primary)] mb-4">Architecture Patterns for BYOC</h2>
-            <p class="text-[var(--color-text-secondary)] mb-6">
-              When designing a BYOC offering, engineering teams typically choose from several proven architecture patterns:
-            </p>
-
-            <div class="space-y-6">
-              <div class="p-4 bg-[var(--color-slate-50)] rounded-lg border border-[var(--color-slate-200)]">
-                <h3 class="font-semibold text-[var(--color-text-primary)] mb-2">Control Plane / Data Plane Separation</h3>
-                <p class="text-sm text-[var(--color-text-secondary)] mb-3">
-                  The most common BYOC pattern. The vendor operates a control plane (management, orchestration, UI) while the customer's data plane runs in their cloud.
-                </p>
-                <ul class="text-sm text-[var(--color-text-secondary)] space-y-1">
-                  <li class="flex items-start gap-2">
-                    <span class="text-[var(--color-success)]">+</span>
-                    <span>Data never leaves customer environment</span>
-                  </li>
-                  <li class="flex items-start gap-2">
-                    <span class="text-[var(--color-success)]">+</span>
-                    <span>Vendor can still provide managed experience</span>
-                  </li>
-                  <li class="flex items-start gap-2">
-                    <span class="text-[var(--color-warning)]">-</span>
-                    <span>Requires secure communication channel between planes</span>
-                  </li>
-                </ul>
-              </div>
-
-              <div class="p-4 bg-[var(--color-slate-50)] rounded-lg border border-[var(--color-slate-200)]">
-                <h3 class="font-semibold text-[var(--color-text-primary)] mb-2">Agent-Based Architecture</h3>
-                <p class="text-sm text-[var(--color-text-secondary)] mb-3">
-                  A lightweight agent runs in the customer environment, communicating outbound to a vendor-hosted service. Common for monitoring and security tools.
-                </p>
-                <ul class="text-sm text-[var(--color-text-secondary)] space-y-1">
-                  <li class="flex items-start gap-2">
-                    <span class="text-[var(--color-success)]">+</span>
-                    <span>Minimal customer-side infrastructure</span>
-                  </li>
-                  <li class="flex items-start gap-2">
-                    <span class="text-[var(--color-success)]">+</span>
-                    <span>Easy to deploy and update</span>
-                  </li>
-                  <li class="flex items-start gap-2">
-                    <span class="text-[var(--color-warning)]">-</span>
-                    <span>May require outbound internet access</span>
-                  </li>
-                </ul>
-              </div>
-
-              <div class="p-4 bg-[var(--color-slate-50)] rounded-lg border border-[var(--color-slate-200)]">
-                <h3 class="font-semibold text-[var(--color-text-primary)] mb-2">Full Self-Hosted / Air-Gapped</h3>
-                <p class="text-sm text-[var(--color-text-secondary)] mb-3">
-                  The entire application runs in the customer environment with no dependency on vendor infrastructure. Required for high-security or air-gapped environments.
-                </p>
-                <ul class="text-sm text-[var(--color-text-secondary)] space-y-1">
-                  <li class="flex items-start gap-2">
-                    <span class="text-[var(--color-success)]">+</span>
-                    <span>Complete isolation and data control</span>
-                  </li>
-                  <li class="flex items-start gap-2">
-                    <span class="text-[var(--color-success)]">+</span>
-                    <span>Works in air-gapped environments</span>
-                  </li>
-                  <li class="flex items-start gap-2">
-                    <span class="text-[var(--color-warning)]">-</span>
-                    <span>Higher operational burden on customer</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </section>
-
-          <hr class="border-[var(--color-slate-200)]" />
-
-          <!-- Implementation Approaches -->
-          <section id="implementation">
-            <h2 class="text-2xl font-bold text-[var(--color-text-primary)] mb-4">Common Implementation Approaches</h2>
-            <p class="text-[var(--color-text-secondary)] mb-6">
-              Teams building BYOC products typically use one or more of these deployment strategies:
-            </p>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div class="p-4 border border-[var(--color-slate-200)] rounded-lg">
-                <div class="flex items-center gap-2 mb-2">
-                  <svg class="w-5 h-5 text-[var(--color-accent-600)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-                  </svg>
-                  <h3 class="font-semibold text-[var(--color-text-primary)]">Kubernetes / Helm</h3>
-                </div>
-                <p class="text-sm text-[var(--color-text-secondary)]">
-                  Package your application as Helm charts for customers running Kubernetes. Widely adopted, but assumes K8s expertise.
-                </p>
-              </div>
-
-              <div class="p-4 border border-[var(--color-slate-200)] rounded-lg">
-                <div class="flex items-center gap-2 mb-2">
-                  <svg class="w-5 h-5 text-[var(--color-accent-600)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                  </svg>
-                  <h3 class="font-semibold text-[var(--color-text-primary)]">Terraform / IaC</h3>
-                </div>
-                <p class="text-sm text-[var(--color-text-secondary)]">
-                  Provide Terraform modules that customers can integrate into their existing infrastructure-as-code workflows.
-                </p>
-              </div>
-
-              <div class="p-4 border border-[var(--color-slate-200)] rounded-lg">
-                <div class="flex items-center gap-2 mb-2">
-                  <svg class="w-5 h-5 text-[var(--color-accent-600)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                  </svg>
-                  <h3 class="font-semibold text-[var(--color-text-primary)]">CLI / Installer Scripts</h3>
-                </div>
-                <p class="text-sm text-[var(--color-text-secondary)]">
-                  Offer a CLI tool or installer script that automates provisioning. Lower barrier to entry for customers.
-                </p>
-              </div>
-
-              <div class="p-4 border border-[var(--color-slate-200)] rounded-lg">
-                <div class="flex items-center gap-2 mb-2">
-                  <svg class="w-5 h-5 text-[var(--color-accent-600)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" />
-                  </svg>
-                  <h3 class="font-semibold text-[var(--color-text-primary)]">Managed Deployment Platforms</h3>
-                </div>
-                <p class="text-sm text-[var(--color-text-secondary)]">
-                  Use platforms like Replicated or Nuon to handle the complexity of deploying into customer clouds.
-                </p>
-              </div>
-            </div>
-          </section>
-
-          <hr class="border-[var(--color-slate-200)]" />
-
-          <!-- Network Topology -->
-          <section id="network-topology">
-            <h2 class="text-2xl font-bold text-[var(--color-text-primary)] mb-4">Network Topology Options</h2>
-            <p class="text-[var(--color-text-secondary)] mb-6">
-              Connecting vendor infrastructure to customer environments requires careful network design:
-            </p>
-
-            <ul class="space-y-4 text-[var(--color-text-secondary)]">
-              <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-[var(--color-accent-500)] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-                <div>
-                  <strong>VPC Peering</strong> — Direct network connection between VPCs. Low latency but requires non-overlapping CIDR blocks and doesn't cross regions easily.
-                </div>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-[var(--color-accent-500)] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-                <div>
-                  <strong>PrivateLink / Private Service Connect</strong> — Expose services over private IPs without VPC peering. Supports cross-account access with fine-grained permissions.
-                </div>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-[var(--color-accent-500)] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-                <div>
-                  <strong>Outbound-Only Agents</strong> — Agents initiate connections to vendor services. No inbound firewall rules required, works through NAT.
-                </div>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-[var(--color-accent-500)] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-                <div>
-                  <strong>Mesh VPNs (Tailscale, Netbird)</strong> — Create secure overlay networks between vendor and customer infrastructure. Easy setup but adds a dependency.
-                </div>
-              </li>
-            </ul>
-          </section>
-
-          <hr class="border-[var(--color-slate-200)]" />
-
-          <!-- Security Considerations -->
-          <section id="security">
-            <h2 class="text-2xl font-bold text-[var(--color-text-primary)] mb-4">Security Considerations</h2>
-            <p class="text-[var(--color-text-secondary)] mb-6">
-              BYOC architectures introduce unique security challenges that must be addressed:
-            </p>
-
-            <div class="space-y-4">
-              <div class="flex items-start gap-3">
-                <div class="w-8 h-8 rounded-lg bg-[var(--color-accent-50)] text-[var(--color-accent-600)] flex items-center justify-center shrink-0">
-                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 class="font-semibold text-[var(--color-text-primary)]">Data Residency & Sovereignty</h3>
-                  <p class="text-sm text-[var(--color-text-secondary)]">Ensure data stays within customer-specified regions. Document data flows clearly for compliance audits.</p>
-                </div>
-              </div>
-
-              <div class="flex items-start gap-3">
-                <div class="w-8 h-8 rounded-lg bg-[var(--color-accent-50)] text-[var(--color-accent-600)] flex items-center justify-center shrink-0">
-                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 class="font-semibold text-[var(--color-text-primary)]">Encryption</h3>
-                  <p class="text-sm text-[var(--color-text-secondary)]">Encrypt data at rest using customer-managed keys (CMK). Use TLS 1.3 for all data in transit between control and data planes.</p>
-                </div>
-              </div>
-
-              <div class="flex items-start gap-3">
-                <div class="w-8 h-8 rounded-lg bg-[var(--color-accent-50)] text-[var(--color-accent-600)] flex items-center justify-center shrink-0">
-                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 class="font-semibold text-[var(--color-text-primary)]">IAM & Access Patterns</h3>
-                  <p class="text-sm text-[var(--color-text-secondary)]">Use least-privilege IAM roles. Support assume-role patterns so customers maintain control over permissions granted to your software.</p>
-                </div>
-              </div>
-
-              <div class="flex items-start gap-3">
-                <div class="w-8 h-8 rounded-lg bg-[var(--color-accent-50)] text-[var(--color-accent-600)] flex items-center justify-center shrink-0">
-                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 class="font-semibold text-[var(--color-text-primary)]">Audit Logging</h3>
-                  <p class="text-sm text-[var(--color-text-secondary)]">Emit comprehensive audit logs that customers can ingest into their SIEM. Include all API calls, configuration changes, and access events.</p>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <hr class="border-[var(--color-slate-200)]" />
-
-          <!-- Operational Challenges -->
-          <section id="operations">
-            <h2 class="text-2xl font-bold text-[var(--color-text-primary)] mb-4">Operational Challenges</h2>
-            <p class="text-[var(--color-text-secondary)] mb-6">
-              Running software in customer environments introduces operational complexity:
-            </p>
-
-            <div class="space-y-4">
-              <div class="p-4 border-l-4 border-[var(--color-accent-500)] bg-[var(--color-slate-50)]">
-                <h3 class="font-semibold text-[var(--color-text-primary)] mb-1">Version Management</h3>
-                <p class="text-sm text-[var(--color-text-secondary)]">
-                  Different customers run different versions. Build compatibility layers, support multiple versions simultaneously, and make upgrades as automated as possible.
-                </p>
-              </div>
-
-              <div class="p-4 border-l-4 border-[var(--color-accent-500)] bg-[var(--color-slate-50)]">
-                <h3 class="font-semibold text-[var(--color-text-primary)] mb-1">Monitoring Distributed Installs</h3>
-                <p class="text-sm text-[var(--color-text-secondary)]">
-                  Aggregate telemetry from all deployments (with customer consent) to detect issues proactively. Provide customers with local dashboards for their instance.
-                </p>
-              </div>
-
-              <div class="p-4 border-l-4 border-[var(--color-accent-500)] bg-[var(--color-slate-50)]">
-                <h3 class="font-semibold text-[var(--color-text-primary)] mb-1">Support & Debugging</h3>
-                <p class="text-sm text-[var(--color-text-secondary)]">
-                  Debugging issues in customer environments is harder than in your own. Build robust diagnostic tools, support bundles, and secure remote access mechanisms.
-                </p>
-              </div>
-
-              <div class="p-4 border-l-4 border-[var(--color-accent-500)] bg-[var(--color-slate-50)]">
-                <h3 class="font-semibold text-[var(--color-text-primary)] mb-1">Upgrade & Rollback</h3>
-                <p class="text-sm text-[var(--color-text-secondary)]">
-                  Design for safe upgrades with rollback capability. Include database migrations that work forward and backward. Test upgrade paths rigorously.
-                </p>
-              </div>
-            </div>
-          </section>
-
-          <hr class="border-[var(--color-slate-200)]" />
-
-          <!-- When to Consider BYOC -->
-          <section id="when-to-byoc">
-            <h2 class="text-2xl font-bold text-[var(--color-text-primary)] mb-4">When to Consider BYOC</h2>
-            <p class="text-[var(--color-text-secondary)] mb-6">
-              BYOC isn't right for every product. Consider offering BYOC when:
-            </p>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-              <div class="p-4 bg-green-50 border border-green-200 rounded-lg">
-                <h3 class="font-semibold text-green-800 mb-2 flex items-center gap-2">
-                  <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                  </svg>
-                  Good Fit
-                </h3>
-                <ul class="text-sm text-green-700 space-y-1">
-                  <li>Customers have strict compliance requirements (SOC 2, HIPAA, FedRAMP)</li>
-                  <li>Data is highly sensitive (PII, financial, healthcare)</li>
-                  <li>Enterprise customers demand it</li>
-                  <li>Your software processes large volumes of customer data</li>
-                </ul>
-              </div>
-
-              <div class="p-4 bg-amber-50 border border-amber-200 rounded-lg">
-                <h3 class="font-semibold text-amber-800 mb-2 flex items-center gap-2">
-                  <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                  </svg>
-                  Consider Carefully
-                </h3>
-                <ul class="text-sm text-amber-700 space-y-1">
-                  <li>Small team without DevOps expertise</li>
-                  <li>Rapidly changing product with frequent releases</li>
-                  <li>Consumer-focused product</li>
-                  <li>Limited engineering resources for multi-tenancy</li>
-                </ul>
-              </div>
+    <!-- What is BYOC - Benefits Cards -->
+    <section class="bg-dark-section pb-16">
+      <div class="container">
+        <div class="max-w-5xl mx-auto">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Data Sovereignty -->
+            <div class="terminal-card">
+              <div class="terminal-card-number">[01]</div>
+              <div class="terminal-card-title">Data Sovereignty</div>
+              <p class="terminal-card-description">
+                Customer data never leaves their cloud account. Simplifies SOC 2, HIPAA, GDPR, and FedRAMP compliance.
+              </p>
             </div>
 
-            <p class="text-sm text-[var(--color-text-secondary)] italic">
-              Building a BYOC offering is a significant investment. Make sure customer demand justifies the engineering effort before committing.
-            </p>
-          </section>
+            <!-- No Lock-in -->
+            <div class="terminal-card">
+              <div class="terminal-card-number">[02]</div>
+              <div class="terminal-card-title">No Vendor Lock-in</div>
+              <p class="terminal-card-description">
+                Customers maintain control over their infrastructure. They can switch vendors or self-host if needed.
+              </p>
+            </div>
 
-
-          <hr class="border-[var(--color-slate-200)]" />
-
-          <!-- Contributing -->
-          <section>
-            <h2 class="text-2xl font-bold text-[var(--color-text-primary)] mb-4">Contributing</h2>
-            <p class="text-[var(--color-text-secondary)] mb-4">
-              This catalog is open source and community-driven. We welcome contributions!
-            </p>
-            <a
-              href="https://github.com/nuonco/awesome-BYOC"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="card p-4 hover:border-[var(--color-accent-300)] flex items-center gap-4 max-w-md"
-            >
-              <div class="w-10 h-10 rounded-lg bg-[var(--color-slate-100)] text-[var(--color-text-primary)] flex items-center justify-center shrink-0">
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                </svg>
-              </div>
-              <div>
-                <h3 class="font-medium text-[var(--color-text-primary)]">View on GitHub</h3>
-                <p class="text-sm text-[var(--color-text-muted)]">Star, fork, or submit a PR</p>
-              </div>
-            </a>
-          </section>
+            <!-- Cost Transparency -->
+            <div class="terminal-card">
+              <div class="terminal-card-number">[03]</div>
+              <div class="terminal-card-title">Cost Transparency</div>
+              <p class="terminal-card-description">
+                Infrastructure costs appear on the customer's cloud bill. Clear budgeting, easy optimization.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section class="bg-[var(--color-slate-50)] py-16 md:py-20">
+      <div class="container">
+        <div class="max-w-5xl mx-auto">
+          <h2 class="hacker-heading text-2xl md:text-3xl font-bold text-[var(--color-text-primary)] mb-8">
+            architecture_patterns<span class="blinking-cursor">_</span>
+          </h2>
+
+          <!-- ASCII Diagram -->
+          <div class="terminal-window mb-10">
+            <div class="terminal-window-header">
+              <div class="terminal-window-dot red"></div>
+              <div class="terminal-window-dot yellow"></div>
+              <div class="terminal-window-dot green"></div>
+              <div class="terminal-window-title">control-plane-data-plane.txt</div>
+            </div>
+            <div class="terminal-window-body">
+              <pre class="ascii-art text-center">
+┌─────────────────────────────────────────────────────────────────┐
+│                      VENDOR INFRASTRUCTURE                       │
+│  ┌───────────────────────────────────────────────────────────┐  │
+│  │                     CONTROL PLANE                          │  │
+│  │   ┌─────────┐    ┌─────────┐    ┌─────────┐              │  │
+│  │   │   UI    │    │   API   │    │ Metrics │              │  │
+│  │   └────┬────┘    └────┬────┘    └────┬────┘              │  │
+│  └────────┼──────────────┼──────────────┼────────────────────┘  │
+└───────────┼──────────────┼──────────────┼────────────────────────┘
+            │              │              │
+            ▼              ▼              ▼
+     ═══════════════ SECURE CHANNEL ═══════════════
+            │              │              │
+            ▼              ▼              ▼
+┌───────────────────────────────────────────────────────────────────┐
+│                    CUSTOMER CLOUD ACCOUNT                         │
+│  ┌─────────────────────────────────────────────────────────────┐  │
+│  │                      DATA PLANE                              │  │
+│  │   ┌─────────┐    ┌─────────┐    ┌─────────┐                │  │
+│  │   │ Compute │    │ Storage │    │  Data   │                │  │
+│  │   └─────────┘    └─────────┘    └─────────┘                │  │
+│  │                                                              │  │
+│  │   * Data never leaves this boundary                         │  │
+│  │   * Customer controls IAM & networking                      │  │
+│  └─────────────────────────────────────────────────────────────┘  │
+└───────────────────────────────────────────────────────────────────┘
+              </pre>
+            </div>
+          </div>
+
+          <!-- Pattern Cards -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="p-5 bg-white border border-[var(--color-slate-200)] rounded-lg">
+              <div class="font-mono text-xs text-[var(--color-accent-600)] mb-2">[01]</div>
+              <h3 class="font-mono font-semibold text-[var(--color-text-primary)] mb-2">Control / Data Plane</h3>
+              <p class="text-sm text-[var(--color-text-secondary)]">
+                Vendor operates management UI and orchestration. Customer's data plane runs workloads in their cloud.
+              </p>
+              <div class="mt-3 text-xs font-mono space-y-1">
+                <div class="text-green-600">+ Data isolation</div>
+                <div class="text-green-600">+ Managed experience</div>
+                <div class="text-amber-600">~ Requires secure channel</div>
+              </div>
+            </div>
+
+            <div class="p-5 bg-white border border-[var(--color-slate-200)] rounded-lg">
+              <div class="font-mono text-xs text-[var(--color-accent-600)] mb-2">[02]</div>
+              <h3 class="font-mono font-semibold text-[var(--color-text-primary)] mb-2">Agent-Based</h3>
+              <p class="text-sm text-[var(--color-text-secondary)]">
+                Lightweight agent in customer environment connects outbound to vendor services.
+              </p>
+              <div class="mt-3 text-xs font-mono space-y-1">
+                <div class="text-green-600">+ Minimal footprint</div>
+                <div class="text-green-600">+ Easy updates</div>
+                <div class="text-amber-600">~ Needs outbound access</div>
+              </div>
+            </div>
+
+            <div class="p-5 bg-white border border-[var(--color-slate-200)] rounded-lg">
+              <div class="font-mono text-xs text-[var(--color-accent-600)] mb-2">[03]</div>
+              <h3 class="font-mono font-semibold text-[var(--color-text-primary)] mb-2">Full Self-Hosted</h3>
+              <p class="text-sm text-[var(--color-text-secondary)]">
+                Everything runs in customer environment. No vendor infrastructure dependency.
+              </p>
+              <div class="mt-3 text-xs font-mono space-y-1">
+                <div class="text-green-600">+ Air-gap compatible</div>
+                <div class="text-green-600">+ Complete control</div>
+                <div class="text-amber-600">~ Higher ops burden</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Implementation Section -->
+    <section class="bg-dark-section py-16 md:py-20">
+      <div class="container">
+        <div class="max-w-5xl mx-auto">
+          <h2 class="font-mono text-2xl md:text-3xl font-bold text-slate-100 mb-8">
+            <span class="text-[var(--color-accent-500)]">&gt;</span> implementation<span class="blinking-cursor">_</span>
+          </h2>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Code Example -->
+            <div class="terminal-window">
+              <div class="terminal-window-header">
+                <div class="terminal-window-dot red"></div>
+                <div class="terminal-window-dot yellow"></div>
+                <div class="terminal-window-dot green"></div>
+                <div class="terminal-window-title">deploy.sh</div>
+              </div>
+              <div class="terminal-window-body text-sm">
+                <div><span class="code-comment"># Deploy with Helm</span></div>
+                <div><span class="code-command">helm</span> install myapp ./charts/byoc \</div>
+                <div class="pl-4"><span class="code-flag">--set</span> cloud.provider=<span class="code-value">aws</span> \</div>
+                <div class="pl-4"><span class="code-flag">--set</span> region=<span class="code-value">us-east-1</span></div>
+                <div class="mt-4"><span class="code-comment"># Or use Terraform</span></div>
+                <div><span class="code-command">terraform</span> apply \</div>
+                <div class="pl-4"><span class="code-flag">-var</span> customer_id=<span class="code-value">acme-corp</span> \</div>
+                <div class="pl-4"><span class="code-flag">-var</span> vpc_id=<span class="code-value">vpc-123abc</span></div>
+              </div>
+            </div>
+
+            <!-- Deployment Methods -->
+            <div class="space-y-4">
+              <div class="terminal-card">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-lg bg-[var(--color-slate-800)] flex items-center justify-center text-[var(--color-accent-400)]">
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="terminal-card-title text-sm">Kubernetes / Helm</div>
+                    <div class="text-xs text-slate-500">For K8s-native customers</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="terminal-card">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-lg bg-[var(--color-slate-800)] flex items-center justify-center text-[var(--color-accent-400)]">
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="terminal-card-title text-sm">Terraform / IaC</div>
+                    <div class="text-xs text-slate-500">Infrastructure as code modules</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="terminal-card">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-lg bg-[var(--color-slate-800)] flex items-center justify-center text-[var(--color-accent-400)]">
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="terminal-card-title text-sm">CLI / Installer</div>
+                    <div class="text-xs text-slate-500">One-command setup scripts</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="terminal-card">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-lg bg-[var(--color-slate-800)] flex items-center justify-center text-[var(--color-accent-400)]">
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" />
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="terminal-card-title text-sm">BYOC Platforms</div>
+                    <div class="text-xs text-slate-500">Replicated, Nuon, etc.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Security Section -->
+    <section class="bg-[var(--color-slate-50)] py-16 md:py-20">
+      <div class="container">
+        <div class="max-w-5xl mx-auto">
+          <h2 class="hacker-heading text-2xl md:text-3xl font-bold text-[var(--color-text-primary)] mb-8">
+            security_checklist<span class="blinking-cursor">_</span>
+          </h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="space-y-4">
+              <div class="hacker-checklist">
+                <div class="hacker-checklist-item">
+                  <span class="text-[var(--color-text-primary)]"><strong>Data Residency</strong> — Keep data in customer-specified regions</span>
+                </div>
+                <div class="hacker-checklist-item">
+                  <span class="text-[var(--color-text-primary)]"><strong>Encryption</strong> — TLS 1.3 in transit, CMK at rest</span>
+                </div>
+                <div class="hacker-checklist-item">
+                  <span class="text-[var(--color-text-primary)]"><strong>IAM</strong> — Least-privilege, assume-role patterns</span>
+                </div>
+                <div class="hacker-checklist-item">
+                  <span class="text-[var(--color-text-primary)]"><strong>Audit Logs</strong> — Full API logging to customer SIEM</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="terminal-window">
+              <div class="terminal-window-header">
+                <div class="terminal-window-dot red"></div>
+                <div class="terminal-window-dot yellow"></div>
+                <div class="terminal-window-dot green"></div>
+                <div class="terminal-window-title">iam-policy.json</div>
+              </div>
+              <div class="terminal-window-body text-xs">
+                <pre class="text-slate-300" set:html={`{
+  <span class="text-amber-400">"Version"</span>: <span class="code-value">"2012-10-17"</span>,
+  <span class="text-amber-400">"Statement"</span>: [{
+    <span class="text-amber-400">"Effect"</span>: <span class="code-value">"Allow"</span>,
+    <span class="text-amber-400">"Action"</span>: [
+      <span class="code-value">"s3:GetObject"</span>,
+      <span class="code-value">"s3:PutObject"</span>
+    ],
+    <span class="text-amber-400">"Resource"</span>: <span class="code-value">"arn:aws:s3:::*"</span>,
+    <span class="text-amber-400">"Condition"</span>: {
+      <span class="text-amber-400">"StringEquals"</span>: {
+        <span class="code-value">"aws:PrincipalAccount"</span>: <span class="code-value">"CUSTOMER_ID"</span>
+      }
+    }
+  }]
+}`} />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- When to Use BYOC -->
+    <section class="bg-dark-section py-16 md:py-20">
+      <div class="container">
+        <div class="max-w-5xl mx-auto">
+          <h2 class="font-mono text-2xl md:text-3xl font-bold text-slate-100 mb-8">
+            <span class="text-[var(--color-accent-500)]">&gt;</span> when_to_byoc<span class="blinking-cursor">_</span>
+          </h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="terminal-card border-green-500/30">
+              <div class="terminal-card-number text-green-400">// GOOD FIT</div>
+              <ul class="space-y-2 text-sm text-slate-300 font-mono">
+                <li class="flex items-start gap-2">
+                  <span class="text-green-400">+</span>
+                  <span>Strict compliance (SOC 2, HIPAA, FedRAMP)</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-green-400">+</span>
+                  <span>Sensitive data (PII, financial, healthcare)</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-green-400">+</span>
+                  <span>Enterprise customers demanding it</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-green-400">+</span>
+                  <span>Large data volumes in customer cloud</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="terminal-card border-amber-500/30">
+              <div class="terminal-card-number text-amber-400">// CONSIDER CAREFULLY</div>
+              <ul class="space-y-2 text-sm text-slate-300 font-mono">
+                <li class="flex items-start gap-2">
+                  <span class="text-amber-400">~</span>
+                  <span>Small team without DevOps expertise</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-amber-400">~</span>
+                  <span>Rapidly changing product</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-amber-400">~</span>
+                  <span>Consumer-focused product</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-amber-400">~</span>
+                  <span>Limited engineering resources</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <p class="mt-8 text-sm text-slate-500 font-mono text-center">
+            // Building BYOC is a significant investment. Validate customer demand first.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contributing CTA -->
+    <section class="bg-[var(--color-slate-50)] py-16">
+      <div class="container">
+        <div class="max-w-2xl mx-auto text-center">
+          <h2 class="hacker-heading justify-center text-xl md:text-2xl font-bold text-[var(--color-text-primary)] mb-4">
+            contribute<span class="blinking-cursor">_</span>
+          </h2>
+          <p class="text-[var(--color-text-secondary)] mb-6">
+            This catalog is open source and community-driven.
+          </p>
+          <a
+            href="https://github.com/nuonco/awesome-BYOC"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-3 px-6 py-3 bg-[var(--color-slate-900)] text-white rounded-lg font-mono hover:bg-[var(--color-slate-800)] transition-colors"
+          >
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+            </svg>
+            <span>View on GitHub</span>
+          </a>
+        </div>
+      </div>
+    </section>
   </main>
 
   <Footer />

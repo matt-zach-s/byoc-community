@@ -938,3 +938,183 @@
     transform: translateY(-5px);
   }
 }
+
+/* Hacker vibe styles for More on BYOC page */
+
+/* Terminal window frame */
+.terminal-window {
+  background-color: var(--color-slate-900);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+}
+
+.terminal-window-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background-color: var(--color-slate-800);
+  border-bottom: 1px solid var(--color-slate-700);
+}
+
+.terminal-window-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.terminal-window-dot.red { background-color: #ff5f57; }
+.terminal-window-dot.yellow { background-color: #febc2e; }
+.terminal-window-dot.green { background-color: #28c840; }
+
+.terminal-window-title {
+  flex: 1;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-slate-400);
+}
+
+.terminal-window-body {
+  padding: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: #e2e8f0;
+  line-height: 1.7;
+}
+
+/* ASCII art styling */
+.ascii-art {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  line-height: 1.2;
+  white-space: pre;
+  color: var(--color-accent-400);
+}
+
+@media (min-width: 768px) {
+  .ascii-art {
+    font-size: 0.8rem;
+  }
+}
+
+/* Flow line animation for diagrams */
+.flow-line {
+  stroke-dasharray: 5 5;
+  animation: flow 1s linear infinite;
+}
+
+@keyframes flow {
+  to {
+    stroke-dashoffset: -10;
+  }
+}
+
+/* Hacker-style section headers */
+.hacker-heading {
+  font-family: var(--font-mono);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.hacker-heading::before {
+  content: ">";
+  color: var(--color-accent-500);
+}
+
+/* Terminal-style feature card */
+.terminal-card {
+  background-color: var(--color-slate-900);
+  border: 1px solid var(--color-slate-700);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  transition: all var(--transition-base) ease;
+}
+
+.terminal-card:hover {
+  border-color: var(--color-accent-500);
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.15);
+}
+
+.terminal-card-number {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-accent-500);
+  margin-bottom: 0.5rem;
+}
+
+.terminal-card-title {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: #f1f5f9;
+  margin-bottom: 0.5rem;
+}
+
+.terminal-card-description {
+  font-size: var(--text-sm);
+  color: var(--color-slate-400);
+  line-height: 1.6;
+}
+
+/* Checklist style */
+.hacker-checklist {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+}
+
+.hacker-checklist-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.5rem 0;
+}
+
+.hacker-checklist-item::before {
+  content: "[x]";
+  color: var(--color-accent-500);
+  flex-shrink: 0;
+}
+
+/* Code block with syntax highlighting feel */
+.code-block {
+  background-color: var(--color-slate-900);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: #e2e8f0;
+  overflow-x: auto;
+}
+
+.code-comment {
+  color: #6b7280;
+}
+
+.code-command {
+  color: #22d3ee;
+}
+
+.code-flag {
+  color: #a78bfa;
+}
+
+.code-value {
+  color: #34d399;
+}
+
+/* Glowing accent for important elements */
+.glow-accent {
+  text-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
+}
+
+/* Dark section background */
+.bg-dark-section {
+  background-color: var(--color-slate-900);
+  color: #f1f5f9;
+}
+
+[data-theme="dark"] .bg-dark-section {
+  background-color: var(--color-slate-950);
+}
