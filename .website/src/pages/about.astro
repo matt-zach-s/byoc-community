@@ -68,81 +68,142 @@ import Footer from '../components/Footer.astro';
             architecture_patterns<span class="blinking-cursor">_</span>
           </h2>
 
-          <!-- ASCII Diagram -->
-          <div class="terminal-window mb-10">
+          <!-- Pattern Tabs -->
+          <div class="flex flex-wrap gap-2 mb-6">
+            <button
+              class="arch-tab active px-4 py-2 font-mono text-sm rounded-lg border-2 transition-all"
+              data-pattern="control-plane"
+            >
+              [01] Control / Data Plane
+            </button>
+            <button
+              class="arch-tab px-4 py-2 font-mono text-sm rounded-lg border-2 transition-all"
+              data-pattern="agent"
+            >
+              [02] Agent-Based
+            </button>
+            <button
+              class="arch-tab px-4 py-2 font-mono text-sm rounded-lg border-2 transition-all"
+              data-pattern="self-hosted"
+            >
+              [03] Full Self-Hosted
+            </button>
+          </div>
+
+          <!-- ASCII Diagrams -->
+          <div class="terminal-window mb-6">
             <div class="terminal-window-header">
               <div class="terminal-window-dot red"></div>
               <div class="terminal-window-dot yellow"></div>
               <div class="terminal-window-dot green"></div>
-              <div class="terminal-window-title">control-plane-data-plane.txt</div>
+              <div class="terminal-window-title" id="diagram-title">control-plane.txt</div>
             </div>
-            <div class="terminal-window-body">
-              <pre class="ascii-art text-center">
-┌─────────────────────────────────────────────────────────────────┐
-│                      VENDOR INFRASTRUCTURE                       │
-│  ┌───────────────────────────────────────────────────────────┐  │
-│  │                     CONTROL PLANE                          │  │
-│  │   ┌─────────┐    ┌─────────┐    ┌─────────┐              │  │
-│  │   │   UI    │    │   API   │    │ Metrics │              │  │
-│  │   └────┬────┘    └────┬────┘    └────┬────┘              │  │
-│  └────────┼──────────────┼──────────────┼────────────────────┘  │
-└───────────┼──────────────┼──────────────┼────────────────────────┘
-            │              │              │
-            ▼              ▼              ▼
-     ═══════════════ SECURE CHANNEL ═══════════════
-            │              │              │
-            ▼              ▼              ▼
-┌───────────────────────────────────────────────────────────────────┐
-│                    CUSTOMER CLOUD ACCOUNT                         │
-│  ┌─────────────────────────────────────────────────────────────┐  │
-│  │                      DATA PLANE                              │  │
-│  │   ┌─────────┐    ┌─────────┐    ┌─────────┐                │  │
-│  │   │ Compute │    │ Storage │    │  Data   │                │  │
-│  │   └─────────┘    └─────────┘    └─────────┘                │  │
-│  │                                                              │  │
-│  │   * Data never leaves this boundary                         │  │
-│  │   * Customer controls IAM & networking                      │  │
-│  └─────────────────────────────────────────────────────────────┘  │
-└───────────────────────────────────────────────────────────────────┘
-              </pre>
+            <div class="terminal-window-body overflow-x-auto">
+              <!-- Control Plane Diagram -->
+              <pre id="diagram-control-plane" class="ascii-diagram font-mono text-xs md:text-sm leading-tight text-[var(--color-accent-400)]">
++---------------------------+
+|     VENDOR CLOUD          |
+|  +---------------------+  |
+|  |    CONTROL PLANE    |  |
+|  |  +----+ +----+ +--+ |  |
+|  |  | UI | | API| |  | |  |
+|  |  +--+-+ +-+--+ +--+ |  |
+|  +-----|-----|---------|--+
++--------|-----|---------|--+
+         |     |         |
+         v     v         v
+    ~~~~ SECURE CHANNEL ~~~~
+         |     |         |
+         v     v         v
++---------------------------+
+|   CUSTOMER CLOUD          |
+|  +---------------------+  |
+|  |     DATA PLANE      |  |
+|  | +------+ +-------+  |  |
+|  | |Compute| |Storage|  |  |
+|  | +------+ +-------+  |  |
+|  |                     |  |
+|  | * Data stays here   |  |
+|  +---------------------+  |
++---------------------------+</pre>
+
+              <!-- Agent Diagram -->
+              <pre id="diagram-agent" class="ascii-diagram font-mono text-xs md:text-sm leading-tight text-[var(--color-accent-400)] hidden">
++---------------------------+
+|     VENDOR CLOUD          |
+|  +---------------------+  |
+|  |  MANAGEMENT SERVICE |  |
+|  |  +----+ +--------+  |  |
+|  |  | API| | Updates|  |  |
+|  |  +--^-+ +---^----+  |  |
+|  +-----|-------|-------+  |
++--------|-------|----------+
+         |       |
+    ~~~~ | HTTPS | ~~~~
+         |       |
++--------|-------|----------+
+|   CUSTOMER CLOUD          |
+|  +-----|-------|-------+  |
+|  |     +---+---+       |  |
+|  |     | AGENT |       |  |
+|  |     +---+---+       |  |
+|  |         |           |  |
+|  |    +----v----+      |  |
+|  |    |  APP    |      |  |
+|  |    +---------+      |  |
+|  | * Outbound only     |  |
+|  +---------------------+  |
++---------------------------+</pre>
+
+              <!-- Self-Hosted Diagram -->
+              <pre id="diagram-self-hosted" class="ascii-diagram font-mono text-xs md:text-sm leading-tight text-[var(--color-accent-400)] hidden">
++---------------------------+
+|   CUSTOMER CLOUD          |
+|  +---------------------+  |
+|  |   FULL APPLICATION  |  |
+|  |  +----+ +--------+  |  |
+|  |  | UI | | API    |  |  |
+|  |  +----+ +--------+  |  |
+|  |  +----+ +--------+  |  |
+|  |  | DB | | Workers|  |  |
+|  |  +----+ +--------+  |  |
+|  |                     |  |
+|  | * No external deps  |  |
+|  | * Air-gap ready     |  |
+|  +---------------------+  |
++---------------------------+
+
+   (No vendor connection)</pre>
             </div>
           </div>
 
-          <!-- Pattern Cards -->
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="p-5 bg-white border border-[var(--color-slate-200)] rounded-lg">
-              <div class="font-mono text-xs text-[var(--color-accent-600)] mb-2">[01]</div>
-              <h3 class="font-mono font-semibold text-[var(--color-text-primary)] mb-2">Control / Data Plane</h3>
-              <p class="text-sm text-[var(--color-text-secondary)]">
+          <!-- Pattern Details -->
+          <div id="pattern-details" class="p-5 bg-white border border-[var(--color-slate-200)] rounded-lg">
+            <div id="detail-control-plane">
+              <p class="text-sm text-[var(--color-text-secondary)] mb-3">
                 Vendor operates management UI and orchestration. Customer's data plane runs workloads in their cloud.
               </p>
-              <div class="mt-3 text-xs font-mono space-y-1">
+              <div class="text-xs font-mono space-y-1">
                 <div class="text-green-600">+ Data isolation</div>
                 <div class="text-green-600">+ Managed experience</div>
                 <div class="text-amber-600">~ Requires secure channel</div>
               </div>
             </div>
-
-            <div class="p-5 bg-white border border-[var(--color-slate-200)] rounded-lg">
-              <div class="font-mono text-xs text-[var(--color-accent-600)] mb-2">[02]</div>
-              <h3 class="font-mono font-semibold text-[var(--color-text-primary)] mb-2">Agent-Based</h3>
-              <p class="text-sm text-[var(--color-text-secondary)]">
+            <div id="detail-agent" class="hidden">
+              <p class="text-sm text-[var(--color-text-secondary)] mb-3">
                 Lightweight agent in customer environment connects outbound to vendor services.
               </p>
-              <div class="mt-3 text-xs font-mono space-y-1">
+              <div class="text-xs font-mono space-y-1">
                 <div class="text-green-600">+ Minimal footprint</div>
                 <div class="text-green-600">+ Easy updates</div>
                 <div class="text-amber-600">~ Needs outbound access</div>
               </div>
             </div>
-
-            <div class="p-5 bg-white border border-[var(--color-slate-200)] rounded-lg">
-              <div class="font-mono text-xs text-[var(--color-accent-600)] mb-2">[03]</div>
-              <h3 class="font-mono font-semibold text-[var(--color-text-primary)] mb-2">Full Self-Hosted</h3>
-              <p class="text-sm text-[var(--color-text-secondary)]">
+            <div id="detail-self-hosted" class="hidden">
+              <p class="text-sm text-[var(--color-text-secondary)] mb-3">
                 Everything runs in customer environment. No vendor infrastructure dependency.
               </p>
-              <div class="mt-3 text-xs font-mono space-y-1">
+              <div class="text-xs font-mono space-y-1">
                 <div class="text-green-600">+ Air-gap compatible</div>
                 <div class="text-green-600">+ Complete control</div>
                 <div class="text-amber-600">~ Higher ops burden</div>
@@ -152,6 +213,42 @@ import Footer from '../components/Footer.astro';
         </div>
       </div>
     </section>
+
+    <script>
+      document.addEventListener('astro:page-load', () => {
+        const tabs = document.querySelectorAll('.arch-tab');
+        const diagrams = document.querySelectorAll('.ascii-diagram');
+        const details = document.querySelectorAll('#pattern-details > div');
+        const titleEl = document.getElementById('diagram-title');
+
+        const titles: Record<string, string> = {
+          'control-plane': 'control-plane.txt',
+          'agent': 'agent-based.txt',
+          'self-hosted': 'self-hosted.txt'
+        };
+
+        tabs.forEach(tab => {
+          tab.addEventListener('click', () => {
+            const pattern = tab.getAttribute('data-pattern');
+
+            // Update tabs
+            tabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+
+            // Update diagrams
+            diagrams.forEach(d => d.classList.add('hidden'));
+            document.getElementById(`diagram-${pattern}`)?.classList.remove('hidden');
+
+            // Update details
+            details.forEach(d => d.classList.add('hidden'));
+            document.getElementById(`detail-${pattern}`)?.classList.remove('hidden');
+
+            // Update title
+            if (titleEl && pattern) titleEl.textContent = titles[pattern] || '';
+          });
+        });
+      });
+    </script>
 
     <!-- Implementation Section -->
     <section class="bg-dark-section py-16 md:py-20">

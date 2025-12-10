@@ -1118,3 +1118,35 @@
 [data-theme="dark"] .bg-dark-section {
   background-color: var(--color-slate-950);
 }
+
+/* Architecture pattern tabs */
+.arch-tab {
+  background-color: transparent;
+  border-color: var(--color-slate-300);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+}
+
+.arch-tab:hover {
+  border-color: var(--color-accent-400);
+  color: var(--color-text-primary);
+}
+
+.arch-tab.active {
+  background-color: var(--color-accent-500);
+  border-color: var(--color-accent-500);
+  color: white;
+}
+
+[data-theme="dark"] .arch-tab {
+  border-color: var(--color-slate-600);
+}
+
+[data-theme="dark"] .arch-tab:hover {
+  border-color: var(--color-accent-400);
+}
+
+[data-theme="dark"] .arch-tab.active {
+  background-color: var(--color-accent-600);
+  border-color: var(--color-accent-600);
+}
