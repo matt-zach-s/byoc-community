@@ -214,49 +214,64 @@ import Footer from '../components/Footer.astro';
       </div>
     </section>
 
-    <script>
-      function initArchTabs() {
-        const tabs = document.querySelectorAll('.arch-tab');
-        const diagrams = document.querySelectorAll('.ascii-diagram');
-        const details = document.querySelectorAll('#pattern-details > div');
-        const titleEl = document.getElementById('diagram-title');
+    <script is:inline>
+      (function() {
+        function initArchTabs() {
+          var tabs = document.querySelectorAll('.arch-tab');
+          var diagrams = document.querySelectorAll('.ascii-diagram');
+          var details = document.querySelectorAll('#pattern-details > div');
+          var titleEl = document.getElementById('diagram-title');
 
-        const titles = {
-          'control-plane': 'control-plane.txt',
-          'agent': 'agent-based.txt',
-          'self-hosted': 'self-hosted.txt'
-        };
+          var titles = {
+            'control-plane': 'control-plane.txt',
+            'agent': 'agent-based.txt',
+            'self-hosted': 'self-hosted.txt'
+          };
 
-        tabs.forEach(tab => {
-          tab.addEventListener('click', () => {
-            const pattern = tab.getAttribute('data-pattern');
+          tabs.forEach(function(tab) {
+            // Remove existing listeners by cloning
+            var newTab = tab.cloneNode(true);
+            tab.parentNode.replaceChild(newTab, tab);
 
-            // Update tabs
-            tabs.forEach(t => t.classList.remove('active'));
-            tab.classList.add('active');
+            newTab.addEventListener('click', function(e) {
+              e.preventDefault();
+              var pattern = this.getAttribute('data-pattern');
 
-            // Update diagrams
-            diagrams.forEach(d => d.classList.add('hidden'));
-            document.getElementById(`diagram-${pattern}`)?.classList.remove('hidden');
+              // Update tabs
+              document.querySelectorAll('.arch-tab').forEach(function(t) {
+                t.classList.remove('active');
+              });
+              this.classList.add('active');
 
-            // Update details
-            details.forEach(d => d.classList.add('hidden'));
-            document.getElementById(`detail-${pattern}`)?.classList.remove('hidden');
+              // Update diagrams
+              document.querySelectorAll('.ascii-diagram').forEach(function(d) {
+                d.classList.add('hidden');
+              });
+              var targetDiagram = document.getElementById('diagram-' + pattern);
+              if (targetDiagram) targetDiagram.classList.remove('hidden');
 
-            // Update title
-            if (titleEl && pattern) titleEl.textContent = titles[pattern] || '';
+              // Update details
+              document.querySelectorAll('#pattern-details > div').forEach(function(d) {
+                d.classList.add('hidden');
+              });
+              var targetDetail = document.getElementById('detail-' + pattern);
+              if (targetDetail) targetDetail.classList.remove('hidden');
+
+              // Update title
+              if (titleEl && pattern && titles[pattern]) {
+                titleEl.textContent = titles[pattern];
+              }
+            });
           });
-        });
-      }
+        }
 
-      // Run on initial load
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initArchTabs);
-      } else {
-        initArchTabs();
-      }
-      // Also run on Astro page transitions
-      document.addEventListener('astro:page-load', initArchTabs);
+        // Run immediately since script is inline and at end of section
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', initArchTabs);
+        } else {
+          initArchTabs();
+        }
+      })();
     </script>
 
     <!-- Implementation Section -->
