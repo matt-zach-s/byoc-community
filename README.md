@@ -13,6 +13,7 @@
   - [Streaming](#streaming)
   - [Observability](#observability)
   - [Data Integration](#data-integration)
+  - [Dev platforms](#dev-platforms)
   - [BYOC platforms](#BYOC-platforms)
 - [What is BYOC?](#what-is-byoc)
 - [Contributing](#contributing)
@@ -45,6 +46,11 @@
 - [Estuary](https://docs.estuary.dev/private-byoc/byoc-deployments/) - Real-time ETL platform with CDC capabilities for streaming data integration. ([Source Code](https://github.com/estuary/flow))
 
 ### Dev Platforms
+
+- [Replicated](https://www.replicated.com/) - Platform for deploying software to customer cloud environments and on-premises infrastructure.
+- [Retool](https://docs.retool.com/self-hosted/retool-managed/concepts/architecture) - Internal tools platform for building admin panels, dashboards, and workflows with self-hosted deployment.
+
+### BYOC Platforms
 
 - [Replicated](https://www.replicated.com/) - Platform for deploying software to customer cloud environments and on-premises infrastructure.
 - [Retool](https://docs.retool.com/self-hosted/retool-managed/concepts/architecture) - Internal tools platform for building admin panels, dashboards, and workflows with self-hosted deployment.
