@@ -8,13 +8,7 @@
 
 ## Contents
 
-- [Apps that offer BYOC](#byoc-apps)
-  - [Databases](#databases)
-  - [Streaming](#streaming)
-  - [Observability](#observability)
-  - [Data Integration](#data-integration)
-  - [Dev platforms](#dev-platforms)
-  - [BYOC platforms](#BYOC-platforms)
+- [BYOC Tools](#byoc-tools)
 - [What is BYOC?](#what-is-byoc)
 - [Contributing](#contributing)
 
@@ -74,12 +68,7 @@
 
 ## Contributing
 
-Contributions welcome! Please read the [contributing guidelines](CONTRIBUTING.md) first.
-
-Before submitting a PR, ensure your addition:
-- Is genuinely a BYOC or self-hostable tool.
-- Has accurate, up-to-date information.
-- Includes a concise description explaining why it's useful.
+Contributions welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for how to add a tool.
 
 ## License
 
