@@ -16,15 +16,18 @@ Before submitting, ensure the tool:
 
 ### How to Add
 
-1. Fork this repository.
-2. Create a new Markdown file in `src/content/tools/` named `your-tool.md`.
-3. Add the required frontmatter (see format below).
-4. Update the README.md with an entry in the appropriate category.
-5. Submit a pull request.
+The easiest way to add a tool is directly through GitHub's web interface:
+
+1. Go to the [tools directory](https://github.com/nuonco/awesome-BYOC/tree/main/tools).
+2. Navigate to the appropriate category folder (e.g., `databases/`, `streaming/`).
+3. Click "Add file" → "Create new file".
+4. Name your file `your-tool.md` and add the required frontmatter (see format below).
+5. Click "Propose new file" and submit your pull request.
+6. Also update the README.md with an entry in the appropriate category.
 
 ### Tool File Format
 
-Create a file like `src/content/tools/your-tool.md`:
+Create a file in `tools/{category}/your-tool.md`:
 
 ```markdown
 ---
@@ -45,15 +48,15 @@ cloudSupport:
 ---
 ```
 
-**Note:** The file name becomes the tool's URL slug (e.g., `my-tool.md` → `/tools/my-tool`).
-
 ### Categories
 
-- `databases` — Databases and data platforms.
-- `streaming` — Real-time data streaming platforms.
-- `monitoring` — Monitoring and observability.
-- `data-integration` — ETL and data movement tools.
-- `dev-platforms` — Internal developer platforms.
+Tools are organized in the `tools/` directory with these category subfolders:
+
+- `databases/` — Databases and data platforms
+- `streaming/` — Real-time data streaming platforms
+- `observability/` — Monitoring and observability
+- `data-integration/` — ETL and data movement tools
+- `dev-platforms/` — Internal developer platforms
 
 ### README Entry Format
 
@@ -74,9 +77,10 @@ Guidelines for descriptions:
 
 If you notice incorrect or outdated information:
 
-1. Fork and edit the relevant file in `src/content/tools/`.
-2. Update the corresponding README.md entry if needed.
-3. Submit a PR with a brief description of what you fixed.
+1. Navigate to the tool file in `tools/{category}/`.
+2. Click the edit icon to modify it directly.
+3. Update the corresponding README.md entry if needed.
+4. Submit a PR with a brief description of what you fixed.
 
 ## Quality Standards
 
@@ -85,11 +89,13 @@ If you notice incorrect or outdated information:
 - **Proper formatting** — Follow the established format consistently.
 - **Valid links** — All links must work and point to official sources.
 
-## Development
+## Website Development
 
-To run the website locally:
+The website source code lives in the `.website/` directory. To run locally:
 
 ```bash
+cd .website
+
 # Install dependencies
 npm install
 
