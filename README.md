@@ -20,6 +20,8 @@
 
 - [Aiven](https://aiven.io/docs/platform/concepts/byoc) - Managed open source data infrastructure with BYOC deployment option for PostgreSQL, Kafka, and more.
 - [CockroachDB](https://www.cockroachlabs.com/product/cloud/bring-your-own-cloud/) - Distributed SQL database that survives failures and scales horizontally. ([Source Code](https://github.com/cockroachdb/cockroach))
+- [ChromaDB](https://www.trychroma.com/) - Open-source vector database for AI applications with self-hosted deployment. ([Source Code](https://github.com/chroma-core/chroma))
+- [LanceDB](https://docs.lancedb.com/enterprise/deploy/deployment) - Vector database with BYOC enterprise deployment for high-performance AI workloads. ([Source Code](https://github.com/lancedb/lancedb))
 - [Pinecone](https://docs.pinecone.io/guides/production/bring-your-own-cloud) - Vector database purpose-built for AI applications requiring similarity search at scale.
 - [SingleStore](https://www.singlestore.com/blog/singlestore-byoc-on-aws/) - Distributed SQL database optimized for real-time analytics and transactions in a single platform.
 
@@ -41,6 +43,7 @@
 
 ## Dev Platforms
 
+- [Replicated](https://www.replicated.com/) - Platform for deploying software to customer cloud environments and on-premises infrastructure.
 - [Retool](https://docs.retool.com/self-hosted/retool-managed/concepts/architecture) - Internal tools platform for building admin panels, dashboards, and workflows with self-hosted deployment.
 
 ## What is BYOC?
