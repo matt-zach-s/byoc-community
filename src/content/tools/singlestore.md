@@ -1,18 +1,17 @@
 ---
 name: SingleStore
-description: Distributed SQL database for real-time analytics and transactions
-longDescription: SingleStore is a distributed relational database that unifies transactions and analytics with high performance. SingleStore Helios BYOC deploys the fully managed database service within your VPC.
-homepage: https://www.singlestore.com
+description: Distributed SQL database for real-time analytics
+homepage: https://www.singlestore.com/blog/singlestore-byoc-on-aws/
 docs: https://docs.singlestore.com
 category: databases
 tags:
-  - distributed-database
-  - real-time-analytics
+  - database
   - sql
-  - htap
-  - mysql-compatible
-license: hybrid
-language: C++
+  - analytics
+  - real-time
+license: commercial
 cloudSupport:
   - aws
+  - gcp
+  - azure
 ---

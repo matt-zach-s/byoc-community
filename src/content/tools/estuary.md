@@ -1,23 +1,17 @@
 ---
-name: Estuary Flow
-description: Real-time ETL platform unifying batch and streaming data pipelines
-longDescription: Estuary Flow is a DataOps platform that integrates CDC, streaming, and batch data pipelines with millisecond latency. Offers BYOC or private cloud deployments for enterprise customers with 200+ connectors.
-homepage: https://estuary.dev
-github: https://github.com/estuary/flow
+name: Estuary
+description: Real-time ETL and data integration
+homepage: https://docs.estuary.dev/private-byoc/byoc-deployments/
 docs: https://docs.estuary.dev
-category: databases
+category: data-integration
 tags:
   - etl
-  - cdc
+  - data-integration
   - real-time
-  - data-pipeline
-  - streaming
-  - batch-processing
+  - cdc
 license: hybrid
-language: Rust
 cloudSupport:
   - aws
   - gcp
   - azure
-stars: 854
 ---

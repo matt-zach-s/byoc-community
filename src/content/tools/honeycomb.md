@@ -1,19 +1,17 @@
 ---
 name: Honeycomb
-description: Observability platform for distributed services with Private Cloud option
-longDescription: Honeycomb is an observability platform that enables engineering teams to understand complex system behavior in real-time. The Private Cloud offering provides dedicated AWS infrastructure with data sovereignty.
-homepage: https://www.honeycomb.io
-github: https://github.com/honeycombio
+description: Observability for distributed systems
+homepage: https://www.honeycomb.io/blog/honeycomb-launches-new-private-cloud-offering-address-security-compliance-cost-concerns
 docs: https://docs.honeycomb.io
 category: monitoring
 tags:
   - observability
-  - apm
-  - distributed-tracing
-  - monitoring
-  - opentelemetry
-license: hybrid
-language: Go
+  - tracing
+  - debugging
+  - distributed-systems
+license: commercial
 cloudSupport:
   - aws
+  - gcp
+  - azure
 ---

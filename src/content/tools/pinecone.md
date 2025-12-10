@@ -1,19 +1,17 @@
 ---
 name: Pinecone
-description: Managed vector database for AI applications with semantic search
-longDescription: Pinecone is a fully managed vector database optimized for machine learning applications and similarity search at scale. BYOC deployment allows you to deploy Pinecone in your private cloud account for data sovereignty and compliance.
-homepage: https://www.pinecone.io
+description: Vector database for AI applications
+homepage: https://docs.pinecone.io/guides/production/bring-your-own-cloud
 docs: https://docs.pinecone.io
-category: ml-inference
+category: databases
 tags:
   - vector-database
-  - machine-learning
   - ai
   - embeddings
-  - semantic-search
-  - llm
+  - search
 license: commercial
 cloudSupport:
   - aws
   - gcp
+  - azure
 ---
