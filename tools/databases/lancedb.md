@@ -1,7 +1,7 @@
 ---
 name: LanceDB
 description: Vector database with BYOC enterprise deployment
-homepage: https://docs.lancedb.com/enterprise/deploy/deployment
+homepage: https://lancedb.com/docs/enterprise/deployment/
 github: https://github.com/lancedb/lancedb
 docs: https://lancedb.com/docs/enterprise/
 category: databases
