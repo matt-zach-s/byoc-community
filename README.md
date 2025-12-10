@@ -1,12 +1,10 @@
-# Awesome BYOC Tools
+# Awesome BYOC [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
-A curated list of **Bring Your Own Cloud (BYOC)** tools for developers.
+> A curated list of Bring Your Own Cloud (BYOC) tools and resources.
 
-> **BYOC** (Bring Your Own Cloud) is a deployment model where software runs in *your* cloud account instead of a vendor's. This gives you data sovereignty, compliance control, cost transparency, and no vendor lock-in.
+**BYOC (Bring Your Own Cloud)** is a deployment model where software runs in *your* cloud account instead of a vendor's shared environment. This gives you data sovereignty, compliance control, cost transparency, and no vendor lock-in.
 
 **[View the website](https://buildyourown.dev)**
-
----
 
 ## Contents
 
@@ -15,37 +13,35 @@ A curated list of **Bring Your Own Cloud (BYOC)** tools for developers.
 - [Observability](#observability)
 - [Data Integration](#data-integration)
 - [Dev Platforms](#dev-platforms)
-
----
+- [What is BYOC?](#what-is-byoc)
+- [Contributing](#contributing)
 
 ## Databases
 
-- [Aiven](https://aiven.io/docs/platform/concepts/byoc) - Managed open source data infrastructure. `Commercial`
-- [CockroachDB](https://www.cockroachlabs.com/product/cloud/bring-your-own-cloud/) - Distributed SQL database. ([Source](https://github.com/cockroachdb/cockroach)) `Hybrid`
-- [Pinecone](https://docs.pinecone.io/guides/production/bring-your-own-cloud) - Vector database for AI applications. `Commercial`
-- [SingleStore](https://www.singlestore.com/blog/singlestore-byoc-on-aws/) - Distributed SQL database for real-time analytics. `Commercial`
+- [Aiven](https://aiven.io/docs/platform/concepts/byoc) - Managed open source data infrastructure with BYOC deployment option for PostgreSQL, Kafka, and more.
+- [CockroachDB](https://www.cockroachlabs.com/product/cloud/bring-your-own-cloud/) - Distributed SQL database that survives failures and scales horizontally. ([Source Code](https://github.com/cockroachdb/cockroach))
+- [Pinecone](https://docs.pinecone.io/guides/production/bring-your-own-cloud) - Vector database purpose-built for AI applications requiring similarity search at scale.
+- [SingleStore](https://www.singlestore.com/blog/singlestore-byoc-on-aws/) - Distributed SQL database optimized for real-time analytics and transactions in a single platform.
 
 ## Streaming
 
-- [Redpanda](https://www.redpanda.com/product/bring-your-own-cloud-byoc) - Kafka-compatible streaming platform. `Hybrid`
-- [WarpStream](https://www.confluent.io/learn/bring-your-own-cloud/) - Kafka-compatible streaming by Confluent. `Commercial`
+- [Redpanda](https://www.redpanda.com/product/bring-your-own-cloud-byoc) - Kafka-compatible streaming platform with 10x lower latency, no ZooKeeper dependency. ([Source Code](https://github.com/redpanda-data/redpanda))
+- [WarpStream](https://www.confluent.io/learn/bring-your-own-cloud/) - Kafka-compatible streaming from Confluent that runs entirely in your cloud with zero inter-zone networking costs.
 
 ## Observability
 
-- [Grafana](https://grafana.com/products/bring-your-own-cloud-byoc/) - Open source observability platform. ([Source](https://github.com/grafana/grafana)) `Open Source`
-- [Groundcover](https://www.groundcover.com/blog/why-byoc-is-the-future) - Cloud-native observability platform. `Commercial`
-- [Honeycomb](https://www.honeycomb.io/blog/honeycomb-launches-new-private-cloud-offering-address-security-compliance-cost-concerns) - Observability for distributed systems. `Commercial`
+- [Grafana](https://grafana.com/products/bring-your-own-cloud-byoc/) - Open source analytics and visualization platform for metrics, logs, and traces. ([Source Code](https://github.com/grafana/grafana))
+- [Groundcover](https://www.groundcover.com/blog/why-byoc-is-the-future) - Cloud-native observability using eBPF for zero-instrumentation monitoring in Kubernetes.
+- [Honeycomb](https://www.honeycomb.io/blog/honeycomb-launches-new-private-cloud-offering-address-security-compliance-cost-concerns) - Observability platform for debugging distributed systems with high-cardinality data exploration.
 
 ## Data Integration
 
-- [Snowflake Openflow](https://www.snowflake.com/en/blog/openflow-byoc-data-integration/) - BYOC data integration from Snowflake. `Commercial`
-- [Estuary](https://docs.estuary.dev/private-byoc/byoc-deployments/) - Real-time ETL and data integration. `Hybrid`
+- [Snowflake Openflow](https://www.snowflake.com/en/blog/openflow-byoc-data-integration/) - BYOC data integration that moves data into Snowflake while keeping compute in your environment.
+- [Estuary](https://docs.estuary.dev/private-byoc/byoc-deployments/) - Real-time ETL platform with CDC capabilities for streaming data integration. ([Source Code](https://github.com/estuary/flow))
 
 ## Dev Platforms
 
-- [Retool](https://docs.retool.com/self-hosted/retool-managed/concepts/architecture) - Internal tools platform with self-hosted option. `Commercial`
-
----
+- [Retool](https://docs.retool.com/self-hosted/retool-managed/concepts/architecture) - Internal tools platform for building admin panels, dashboards, and workflows with self-hosted deployment.
 
 ## What is BYOC?
 
@@ -53,31 +49,30 @@ A curated list of **Bring Your Own Cloud (BYOC)** tools for developers.
 
 ### Benefits
 
-- **Data Sovereignty** — Your data never leaves your cloud account
-- **Compliance** — Meet SOC 2, HIPAA, GDPR, FedRAMP requirements
-- **No Vendor Lock-in** — Maintain control over your infrastructure
-- **Cost Transparency** — Infrastructure costs on your cloud bill
+- **Data Sovereignty** — Your data never leaves your cloud account, simplifying compliance.
+- **Compliance** — Meet SOC 2, HIPAA, GDPR, and FedRAMP requirements more easily.
+- **No Vendor Lock-in** — Maintain control over your infrastructure and data.
+- **Cost Transparency** — Infrastructure costs appear on your cloud bill for clear budgeting.
 
 ### Common Patterns
 
 | Pattern | Description |
 |---------|-------------|
-| Control Plane / Data Plane | Vendor hosts management UI, your cloud runs the workloads |
-| Agent-Based | Lightweight agent in your environment connects outbound |
-| Full Self-Hosted | Everything runs in your environment (air-gapped capable) |
-
----
+| Control Plane / Data Plane | Vendor hosts management UI, your cloud runs the workloads. |
+| Agent-Based | Lightweight agent in your environment connects outbound to vendor services. |
+| Full Self-Hosted | Everything runs in your environment, supporting air-gapped deployments. |
 
 ## Contributing
 
 Contributions welcome! Please read the [contributing guidelines](CONTRIBUTING.md) first.
 
-- **Add a tool**: Open a PR to add to the list
-- **Report issues**: Open an issue on GitHub
-- **Improve docs**: PRs for documentation improvements are appreciated
-
----
+Before submitting a PR, ensure your addition:
+- Is genuinely a BYOC or self-hostable tool.
+- Has accurate, up-to-date information.
+- Includes a concise description explaining why it's useful.
 
 ## License
 
-This list is under the [MIT License](LICENSE).
+[![CC0](https://licensebuttons.net/p/zero/1.0/88x31.png)](https://creativecommons.org/publicdomain/zero/1.0/)
+
+To the extent possible under law, [Nuon](https://nuon.co) has waived all copyright and related or neighboring rights to this work.

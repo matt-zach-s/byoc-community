@@ -1,26 +1,36 @@
-# Contributing to Build Your Own
+# Contributing to Awesome BYOC
 
-Thanks for your interest in contributing! This project is a community-curated list of BYOC (Bring Your Own Cloud) tools and resources.
+Thank you for your interest in contributing! This is a community-curated list of BYOC (Bring Your Own Cloud) tools and resources.
 
-## How to Contribute
+Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
 
-### Adding a New Tool
+## Adding a New Tool
 
-1. Fork this repository
-2. Create a new Markdown file in `src/content/tools/` named `your-tool.md`
-3. Add the required frontmatter (see format below)
-4. Submit a pull request
+### Requirements
 
-**Tool format (Markdown with YAML frontmatter):**
+Before submitting, ensure the tool:
+
+- **Supports BYOC deployment** — The tool must offer a bring-your-own-cloud, self-hosted, or on-premises deployment option.
+- **Is actively maintained** — No abandoned or unmaintained projects.
+- **Has quality documentation** — Links should point to official, up-to-date sources.
+
+### How to Add
+
+1. Fork this repository.
+2. Create a new Markdown file in `src/content/tools/` named `your-tool.md`.
+3. Add the required frontmatter (see format below).
+4. Update the README.md with an entry in the appropriate category.
+5. Submit a pull request.
+
+### Tool File Format
 
 Create a file like `src/content/tools/your-tool.md`:
 
 ```markdown
 ---
 name: Tool Name
-description: Short one-line description
-longDescription: Optional longer description (2-3 sentences)
-homepage: https://example.com
+description: Short one-line description ending with a period.
+homepage: https://example.com/byoc-page
 github: https://github.com/org/repo  # if open source
 docs: https://docs.example.com
 category: databases  # see categories below
@@ -28,84 +38,56 @@ tags:
   - relevant
   - keywords
 license: open-source  # or 'commercial' or 'hybrid'
-language: Go  # if open source
 cloudSupport:
   - aws
   - gcp
-  - azure  # or just '- any' or '- on-prem'
-stars: 1234  # GitHub stars if applicable
+  - azure
 ---
 ```
 
-**Note:** The file name becomes the tool's URL slug. Use lowercase with hyphens (e.g., `my-tool.md` → `/tools/my-tool`).
+**Note:** The file name becomes the tool's URL slug (e.g., `my-tool.md` → `/tools/my-tool`).
 
-**Categories:**
-- `databases` - Databases and data platforms
-- `ci-cd` - CI/CD and deployment tools
-- `monitoring` - Monitoring and observability
-- `ml-inference` - ML/AI inference infrastructure
-- `dev-platforms` - Internal developer platforms
-- `installers` - App packagers and installers
-- `feature-flags` - Feature flags and config
-- `debugging` - Remote debugging tools
-- `access-control` - IAM and access control
-- `networking` - VPN, proxy, and networking
-- `secrets-mesh` - Secrets management and service mesh
+### Categories
 
-### Adding a Featured Vendor
+- `databases` — Databases and data platforms.
+- `streaming` — Real-time data streaming platforms.
+- `monitoring` — Monitoring and observability.
+- `data-integration` — ETL and data movement tools.
+- `dev-platforms` — Internal developer platforms.
 
-Featured vendors are BYOC implementations we consider exemplary. To suggest one:
+### README Entry Format
 
-1. Fork this repository
-2. Edit `src/data/featuredVendors.ts`
-3. Add detailed information including:
-   - Company overview and BYOC offering
-   - What makes their implementation great
-   - Key highlights (3-5 bullet points)
-   - Links to documentation/blog posts
-   - A detailed write-up (4-6 paragraphs)
-4. Submit a pull request
+Add an entry to the appropriate section in README.md following this format:
 
-### Fixing Information
+```markdown
+- [Tool Name](https://link-to-byoc-docs) - Description explaining why this tool is useful for BYOC. ([Source Code](https://github.com/org/repo))
+```
+
+Guidelines for descriptions:
+- Start with a capital letter.
+- End with a period.
+- Keep it concise (one sentence preferred).
+- Explain *why* the tool is useful, not just *what* it is.
+- Include `([Source Code](url))` only for open source projects.
+
+## Updating Existing Entries
 
 If you notice incorrect or outdated information:
 
-1. Fork and edit the relevant file:
-   - For tools: `src/content/tools/<tool-name>.md`
-   - For featured vendors: `src/data/featuredVendors.ts`
-2. Submit a PR with a brief description of what you fixed
+1. Fork and edit the relevant file in `src/content/tools/`.
+2. Update the corresponding README.md entry if needed.
+3. Submit a PR with a brief description of what you fixed.
 
-### Improving the Site
+## Quality Standards
 
-For site improvements (design, features, bug fixes):
-
-1. Fork the repository
-2. Make your changes
-3. Test locally with `npm run dev`
-4. Submit a PR describing your changes
-
-## Guidelines
-
-### What Belongs Here
-
-- Tools that support BYOC, self-hosted, or on-premises deployment
-- Tools relevant to developers building or consuming BYOC software
-- Active projects with recent updates
-
-### What Doesn't Belong
-
-- SaaS-only tools with no self-hosted option
-- Abandoned or unmaintained projects
-- Tools unrelated to cloud infrastructure
-
-### Quality Standards
-
-- Descriptions should be accurate and concise
-- Links should be valid and point to official sources
-- Categories and tags should be appropriate
-- No promotional language
+- **Accuracy** — All information must be accurate and up-to-date.
+- **No promotion** — Descriptions should be factual, not promotional.
+- **Proper formatting** — Follow the established format consistently.
+- **Valid links** — All links must work and point to official sources.
 
 ## Development
+
+To run the website locally:
 
 ```bash
 # Install dependencies
