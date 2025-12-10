@@ -47,13 +47,12 @@
 
 ### Dev Platforms
 
-- [Replicated](https://www.replicated.com/) - Platform for deploying software to customer cloud environments and on-premises infrastructure.
 - [Retool](https://docs.retool.com/self-hosted/retool-managed/concepts/architecture) - Internal tools platform for building admin panels, dashboards, and workflows with self-hosted deployment.
 
 ### BYOC Platforms
 
 - [Replicated](https://www.replicated.com/) - Platform for deploying software to customer cloud environments and on-premises infrastructure.
-- [Retool](https://docs.retool.com/self-hosted/retool-managed/concepts/architecture) - Internal tools platform for building admin panels, dashboards, and workflows with self-hosted deployment.
+- [Nuon](https://docs.nuon.co/get-started/introduction) - Control Plane and Runner driven BYOC platform for deploying software to customer cloud environments and on-premises infrastructure.
 
 ## What is BYOC?
 
