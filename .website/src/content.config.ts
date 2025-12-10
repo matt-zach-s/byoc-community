@@ -16,6 +16,7 @@ const toolsCollection = defineCollection({
       'monitoring',
       'data-integration',
       'dev-platforms',
+      'byoc-platforms',
     ]),
     tags: z.array(z.string()),
     license: z.enum(['open-source', 'commercial', 'hybrid']),

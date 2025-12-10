@@ -1,11 +1,11 @@
 ---
 name: Replicated
-description: Platform for deploying software to customer environments
+description: Managed BYOC platform for vendors to manage the lifecycle of installing on a customer's cloud
 homepage: https://www.replicated.com/
 docs: https://docs.replicated.com/
-category: dev-platforms
+category: byoc-platforms
 tags:
-  - installer
+  - byoc
   - deployment
   - enterprise
   - kubernetes

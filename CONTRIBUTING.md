@@ -40,6 +40,7 @@ cloudSupport:
 - `observability/`
 - `data-integration/`
 - `dev-platforms/`
+- `byoc-platforms/`
 
 ## Website Development
 
