@@ -44,7 +44,7 @@
 
 ### BYOC Platforms
 
-- [Replicated](https://www.replicated.com/) - Platform for deploying software to customer cloud environments and on-premises infrastructure.
+- [Replicated](https://www.replicated.com/) - Managed BYOC platform for vendors to manage the lifecycle of installing on a customer's cloud.
 - [Nuon](https://docs.nuon.co/get-started/introduction) - Control Plane and Runner driven BYOC platform for deploying software to customer cloud environments and on-premises infrastructure.
 
 ## What is BYOC?
